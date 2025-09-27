@@ -1,0 +1,10 @@
+-Xms8G
+-Xmx10G
+-XX:+UnlockExperimentalVMOptions
+-XX:+UseCompactObjectHeaders
+-XX:+AlwaysPreTouch
+-XX:+DisableExplicitGC
+-XX:+UseStringDeduplication
+-XX:+UseZGC
+-Dfml.readTimeout=90
+-Dfml.queryResult=confirm

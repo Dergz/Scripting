@@ -1,20 +1,61 @@
 #!/usr/bin/env sh
 
-## Main Menu script that ties everything together also establishing links to dirs & Folders
+## Just sources all the modules into the main script as a tie together
 
-## STATIC LINKS
-ServerDir="/home/skarf/ModPacks"
-Archives="/home/skarf/Archives"
-Scripting="/home/skarf/Scripting"
-SubScripts="$Scripting/SubScripts"
+## First to establish link and function
+SCR_Loc=/home/skarf/Scripting ## File Dir of script
+MP_LOC=/home/skarf/ModPacks ## File Dir of modpacks
 
+for file in $SCR_Loc/Modules/*
+do
+	source $file
+done
+source $SCR_Loc/Settings.sh ## Sources settings
 
-
-## Welcoming Message
+Welcome(){ ##Script Welcome message
+	clear
     echo "" 
     echo "###############################"
     echo "###                         ###"
-    echo "###      Server Picker      ###"
+    echo "###    Server Controller    ###"
     echo "###                         ###"
     echo "###############################"
     echo "" 
+}
+
+MainMenu () {
+	echo "Server Controll  center"
+	echo
+	echo " S) Controll Server"
+	echo " K) Kill Server"
+	echo " C) Screen to Server"
+	echo " M) Modify Server Properties"
+	echo " U) Update Server"
+	echo " E) Script Settings"
+	echo 
+    echo " Q) Quit"
+	echo
+	printf " Please choose an action: "
+	read choice
+	case "$choice" in
+		s|S)	Server_Controller;;
+		#k|K)	killMenu;;
+		#c|C)	connectMenu;;
+		#m|M)	modifyMenu;;
+		#u|U)	updateMenu;;
+		q|Q)	clear; exit;;
+		*)	printf "\n[ERROR]: That is not a valid choice"; sleep 1s; Induce;;
+	esac
+}
+
+Induce(){ ## Runs all start screen scripts at once
+	Welcome
+	if [ "$Setting_Display_Stats" = "TRUE" ];then
+		IP_ADDR_V4
+		Disk_Usage
+		echo
+	fi
+	MainMenu
+}
+
+Induce
