@@ -24,7 +24,9 @@ Welcome(){ ##Script Welcome message
 }
 
 MainMenu () {
-	echo "Server Controll  center"
+	echo "Server Controll center"
+	echo
+	Check_For_Screen
 	echo
 	echo " S) Controll Server"
 	echo " M) Modify Server Properties"
@@ -42,6 +44,15 @@ MainMenu () {
 		q|Q)	clear; exit;;
 		*)	printf "\n[ERROR]: That is not a valid choice"; sleep 1s; Induce;;
 	esac
+}
+
+Check_For_Screen(){
+	if ! screen -list | grep -q "Detached"; then
+		echo "Currently running: Nothing"
+	else
+		SN="$(screen -list | grep "Detached")"
+		echo "Server Running: $SN"
+	fi
 }
 
 Induce(){ ## Runs all start screen scripts at once

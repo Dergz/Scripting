@@ -52,6 +52,7 @@ Server_Options(){ ##Must be induced by Server_Picker due to var dep, WORLD FILE 
     sleep 2s
     Server_Panel
 }
+
 Server_Panel(){
     clear
     echo "ModPack: $Selected_Server"
@@ -77,8 +78,22 @@ Server_Panel(){
 	esac
 }
 
+Check_For_Screen_ButVar(){
+	if ! screen -list | grep -q "Detached"; then
+        SERVER_RUNNING=0
+	else
+		SERVER_RUNNING=1
+	fi
+}
+
 Server_Controller(){
     echo
-    Server_List
-    Server_Picker
+    Check_For_Screen_ButVar
+    if [[ $SERVER_RUNNING = "0" ]]; then
+        Server_List
+        Server_Picker
+    else
+        Server_Panel
+    fi
+    
 }
