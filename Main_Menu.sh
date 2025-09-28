@@ -27,8 +27,6 @@ MainMenu () {
 	echo "Server Controll  center"
 	echo
 	echo " S) Controll Server"
-	echo " K) Kill Server"
-	echo " C) Screen to Server"
 	echo " M) Modify Server Properties"
 	echo " U) Update Server"
 	echo " E) Script Settings"
@@ -39,8 +37,6 @@ MainMenu () {
 	read choice
 	case "$choice" in
 		s|S)	Server_Controller;;
-		#k|K)	killMenu;;
-		#c|C)	connectMenu;;
 		#m|M)	modifyMenu;;
 		#u|U)	updateMenu;;
 		q|Q)	clear; exit;;

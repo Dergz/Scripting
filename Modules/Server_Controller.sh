@@ -61,6 +61,7 @@ Server_Panel(){
     echo "Options: "
     echo ""
     echo " S) Start Server"
+    echo " K) Kill Server"
 	echo " E) Edit Settings"
 	echo " C) Screen to Server"
     echo " Q) Quit to main menu"
@@ -69,8 +70,8 @@ Server_Panel(){
 	read choice
 	case "$choice" in
 		s|S)	Server_Starter;;
-		#k|K)	Edit_ModPack_Settings;;
-		#c|C)	Connect_To_Screen;;
+		k|K)	Kill_Screen;;
+		c|C)	Connect_To_Screen;;
 		q|Q)	clear; Induce;;
 		*)	printf "\n[ERROR]: That is not a valid choice"; sleep 1s; clear; Server_Panel;;
 	esac
