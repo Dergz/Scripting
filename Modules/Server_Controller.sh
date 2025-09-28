@@ -35,7 +35,6 @@ Server_Picker(){
         echo "Now entering $Selected_Server:"
         sleep 1s
         clear
-        echo "ModPack: $Selected_Server"
         Server_Options
     else
         echo "Not an option"
@@ -49,11 +48,18 @@ Server_Picker(){
 Server_Options(){ ##Must be induced by Server_Picker due to var dep, WORLD FILE MUST STAY AS "world"
     ModPack_Folder=$MP_LOC/$Selected_Server
     ## ls $ModPack_Folder
+    ModPack_Settings
+    sleep 2s
+    Server_Panel
+}
+Server_Panel(){
+    clear
+    echo "ModPack: $Selected_Server"
     File=$ModPack_Folder/world
     Determine_File_Size
     echo ""
-    ModPack_Settings
-
+    echo "Options: "
+    echo ""
     echo " S) Start Server"
 	echo " E) Edit Settings"
 	echo " C) Screen to Server"
@@ -66,12 +72,8 @@ Server_Options(){ ##Must be induced by Server_Picker due to var dep, WORLD FILE 
 		#k|K)	Edit_ModPack_Settings;;
 		#c|C)	Connect_To_Screen;;
 		q|Q)	clear; Induce;;
-		*)	printf "\n[ERROR]: That is not a valid choice"; sleep 1s; Server_Options;;
+		*)	printf "\n[ERROR]: That is not a valid choice"; sleep 1s; clear; Server_Panel;;
 	esac
-}
-
-Server_Starter(){
-    echo "Starting server in screen session"
 }
 
 Server_Controller(){

@@ -2,6 +2,6 @@
 
 Determine_File_Size(){
     File_Size="$(du -sh $File)"
-    echo "World Folder Size: ${File_Size%%/*}"
+    echo "World Size: ${File_Size%%/*}"
 
 }
