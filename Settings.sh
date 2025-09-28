@@ -4,3 +4,4 @@
 ## Using SH as its just makes them vars :P
 
 Setting_Display_Stats="TRUE"
+Setting_Check_Updates="FALSE"

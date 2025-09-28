@@ -26,12 +26,14 @@ Welcome(){ ##Script Welcome message
 MainMenu () {
 	echo "Server Controll center"
 	echo
+	Check_For_Updates
 	Check_For_Screen
 	echo
 	echo " S) Controll Server"
 	echo " M) Modify Server Properties"
 	echo " U) Update Server"
 	echo " E) Script Settings"
+	echo " P) Power Options"
 	echo 
     echo " Q) Quit"
 	echo
